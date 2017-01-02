@@ -11,6 +11,7 @@ public class FRG {
 		
 		// Variable to call user input
 		String Result;
+		String Name;
 		
 		// Variable used to make program recognise where to split the Result string
 		String Deliminator = ":";
@@ -32,8 +33,13 @@ public class FRG {
    		int hmax = home_score[3];  		
    		int amax = away_score[4];   		
    		
-   		// Scanner for user input
+   		// Scanners for user input
+   		Scanner nameinput = new Scanner (System.in);
    		Scanner userinput = new Scanner (System.in);
+   		
+   		// Name input
+   		System.out.println("Please enter your name: ");
+   		Name = userinput.nextLine();
    		
    		// User instructions
    		System.out.println("Please enter your football results");
@@ -46,10 +52,8 @@ public class FRG {
    		for (lc = 0; lc <= 100 ; lc++)	{
    		
 	   		// User enters data here
-	   		
 	   		System.out.println("Input Results: ");
 	   		Result = userinput.nextLine();
-	   		
 	   		Result = Result.replace(" : ", ":");
 	   		
 	   		// If user enters stop the loop ends
@@ -65,39 +69,34 @@ public class FRG {
 	   			System.out.println("Highest home score: " + hmax );
 	   			System.out.println("Highest away score: " + amax );
 	   			System.out.println("Total number of invalid entries: " + invalidlc );
+	   			lc--;
 	   			continue;
 	   		}
 	   		
 	   		// if user enters help instructions are reprinted
 	   		else if (Result.equals("help")){
-	   			System.out.println("Please enter your football results");
 	   		   	System.out.println("Do it in this format: Team 1:Team 2:Team 1 Score:Team 2 Score");
 	   		   	System.out.println("To stop entering football results type stop");
 	   		   	System.out.println("To see input statistics type totals"); 		
 	   		   	System.out.println("To reprint instructions type help");
-	   		   	continue;
-	   			
+	   		   	lc--;
+	   		   	continue;	
 	   		}
-	   		
 	   		
 	   		try {
 	   		// String split into 4 different variables
 	   		ud = Result.split(Deliminator);
 			
-	   		// String is split into 4 seperate variables and stored in array
+	   		// String is split into 4 different variables and stored in array
 	   		home_team [lc] = ud[0];
 			away_team [lc] = ud[1];
 			home_score [lc] = Integer.parseInt(ud[2]);
 			away_score [lc] = Integer.parseInt(ud[3]);
 			tm++;
 			
-			
-			
-			
 			// variables used for finding the total sum for home and away scores
-				
-				htotal += home_score[lc];
-				atotal += away_score[lc];
+			htotal += home_score[lc];
+			atotal += away_score[lc];
 						
 			// loops used for finding the highest score in each team	
 				for (int y = 0; y < home_score.length; y++ ) {
@@ -124,10 +123,11 @@ public class FRG {
 	   			System.out.println("Invalid entry, please try again");
 	   			invalidlc++;
 	   		}
+	   		
    		}
    		
    		// For loop to print out all of the scores user has entered
-   		
+   		System.out.println(Name + "'s football results");
    		for (; lc > 0; lc--)
    		{
    			System.out.println(home_team[lc-1] + " [" + home_score[lc-1] + "]" + " | " + away_team[lc-1] + " [" + away_score[lc-1] + "] ");
