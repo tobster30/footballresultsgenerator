@@ -39,7 +39,8 @@ public class FRG {
    		
    		// Name input
    		System.out.println("Please enter your name: ");
-   		Name = userinput.nextLine();
+   		Name = nameinput.nextLine();
+   		
    		
    		// User instructions
    		System.out.println("Please enter your football results");
@@ -124,7 +125,11 @@ public class FRG {
 	   			invalidlc++;
 	   		}
 	   		
+	   		
    		}
+   		
+   		nameinput.close();
+   		userinput.close();
    		
    		// For loop to print out all of the scores user has entered
    		System.out.println(Name + "'s football results");
