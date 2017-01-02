@@ -128,6 +128,7 @@ public class FRG {
 	   		
    		}
    		
+		//close scanners
    		nameinput.close();
    		userinput.close();
    		
