@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.Scanner;
 
 public class FRG {
@@ -40,7 +39,8 @@ public class FRG {
    		System.out.println("Please enter your football results");
 	   	System.out.println("Do it in this format: Team 1:Team 2:Team 1 Score:Team 2 Score");
 	   	System.out.println("To stop entering football results type stop");
-	   	System.out.println("To see input statistics type Totals"); 		
+	   	System.out.println("To see input statistics type totals"); 	
+		System.out.println("To reprint instructions type help");
 	   	
    		// Loop to repeat the data input 100 times and count how many times it has done it
    		for (lc = 0; lc <= 100 ; lc++)	{
@@ -58,7 +58,7 @@ public class FRG {
 	   		}
 	   		
 	   		// if user enters Totals the following statistics are shown and returns back to user input
-	   		else if (Result.equals("Totals")){
+	   		else if (Result.equals("totals")){
 	   			System.out.println("Total number of matches played: " + tm );
 	   			System.out.println("Total home scores of all matches: " + htotal );
 	   			System.out.println("Total away scores of all matches: " + atotal );
@@ -66,6 +66,17 @@ public class FRG {
 	   			System.out.println("Highest away score: " + amax );
 	   			System.out.println("Total number of invalid entries: " + invalidlc );
 	   			continue;
+	   		}
+	   		
+	   		// if user enters help instructions are reprinted
+	   		else if (Result.equals("help")){
+	   			System.out.println("Please enter your football results");
+	   		   	System.out.println("Do it in this format: Team 1:Team 2:Team 1 Score:Team 2 Score");
+	   		   	System.out.println("To stop entering football results type stop");
+	   		   	System.out.println("To see input statistics type totals"); 		
+	   		   	System.out.println("To reprint instructions type help");
+	   		   	continue;
+	   			
 	   		}
 	   		
 	   		
@@ -81,17 +92,13 @@ public class FRG {
 			tm++;
 			
 			
-			// loops used for finding the total sum for home and away scores
-				for (int i = 0 ;i<home_score.length; i++){
-					htotal += home_score[i];
-				}
-					
-				for (int x = 0 ;x<away_score.length; x++){
-					atotal += away_score[x];
-				}
+			
+			
+			// variables used for finding the total sum for home and away scores
 				
-				
-				
+				htotal += home_score[lc];
+				atotal += away_score[lc];
+						
 			// loops used for finding the highest score in each team	
 				for (int y = 0; y < home_score.length; y++ ) {
 	   				if (home_score[y] > hmax) {
@@ -120,6 +127,7 @@ public class FRG {
    		}
    		
    		// For loop to print out all of the scores user has entered
+   		
    		for (; lc > 0; lc--)
    		{
    			System.out.println(home_team[lc-1] + " [" + home_score[lc-1] + "]" + " | " + away_team[lc-1] + " [" + away_score[lc-1] + "] ");
